@@ -29,7 +29,9 @@ connectDB()                         // promise is returned
 
 // Routes
 import customerRouter from "./routes/customer.route.js"
-import productRouter from "./routes/product.routes.js"
+import productRouter from "./routes/product.route.js"
+import orderRouter from "./routes/order.route.js"
 
 app.use("/api/customer", customerRouter)
 app.use("/api/product", productRouter)
+app.use("/api/order", orderRouter)
