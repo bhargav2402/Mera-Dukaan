@@ -67,6 +67,10 @@ const vendorSchema = new Schema({
         default: "General",
         enum: ["General", "Grocery", "Stationary", "Pharmacy", "Electronics and Hardware", "Other"]
     },
+    returnPol: {
+        type: String,
+        default: "Return"
+    },
     refreshToken: {
         type: String
     }

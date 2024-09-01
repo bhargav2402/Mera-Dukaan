@@ -30,10 +30,12 @@ connectDB()                         // promise is returned
 // Routes
 import customerRouter from "./routes/customer.routes.js"
 import productRouter from "./routes/product.routes.js"
+import inventoryRouter from "./routes/inventory.routes.js"
 import orderRouter from "./routes/order.routes.js"
 import vendorRouter from "./routes/vendor.routes.js"
 
 app.use("/api/customer", customerRouter)
 app.use("/api/product", productRouter)
+app.use("/api/inventory", inventoryRouter)
 app.use("/api/order", orderRouter)
 app.use("/api/vendor", vendorRouter)
