@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const productSchema = new Schema({
     name: {
@@ -11,8 +11,16 @@ const productSchema = new Schema({
     },
     category: {
         type: String,
-        required: true
+        required: true,
     },
+    subCategory: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true
 });
