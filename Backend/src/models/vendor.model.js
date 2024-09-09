@@ -3,6 +3,10 @@ import bycrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 const vendorSchema = new Schema({
+    userType: {
+        type: String,
+        default: "vendor"
+    },
     username: {
         type : String,
         required : true,
