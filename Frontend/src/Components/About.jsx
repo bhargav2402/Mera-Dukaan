@@ -1,4 +1,4 @@
-import img from "./Profiles/img1.webp"
+import img from "./assets/img1.webp"
 export default function About() {
     return (
         <div class="bg-slate-950 grid  h-screen overflow-x-hidden">
