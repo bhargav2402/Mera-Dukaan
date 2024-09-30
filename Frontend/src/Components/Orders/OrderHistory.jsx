@@ -28,7 +28,7 @@ export default function OrderHistory() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_PROXY} /api/order/history/${duration[selectedRange]}`)
+        axios.get(`${import.meta.env.VITE_PROXY}/api/order/history/${duration[selectedRange]}`)
             .then(res => {
                 const data = res.data.data;
                 setOrders(data);

@@ -24,7 +24,7 @@ export default function AccessBar() {
     };
 
     const logout = () => {
-        axios.get(import.meta.env.VITE_PROXY + "/api/customer/logout")
+        axios.get(import.meta.env.VITE_PROXY+"/api/customer/logout")
             .then(res => {
                 navigate("/signin");
             })

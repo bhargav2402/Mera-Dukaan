@@ -13,7 +13,7 @@ const ProductShops = () => {
     useEffect(() => {
         if (product && product.vendors) {
             axios
-                .post(`${import.meta.env.VITE_PROXY} /api/vendor/products`, { vendorsList: product.vendors })
+                .post(`${import.meta.env.VITE_PROXY}/api/vendor/products`, { vendorsList: product.vendors })
                 .then(res => {
                     const data = res.data.data;
                     setVendors(data);

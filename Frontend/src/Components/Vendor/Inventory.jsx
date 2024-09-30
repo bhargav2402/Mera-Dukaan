@@ -19,7 +19,7 @@ export default function Inventory() {
 
     useEffect(() => {
         vendor.userType != "vendor" ? navigate(-1) : null
-        axios.get(`${import.meta.env.VITE_PROXY} /api/inventory/vendor/${vendor._id}`)
+        axios.get(`${import.meta.env.VITE_PROXY}/api/inventory/vendor/${vendor._id}`)
             .then(res => {
                 const data = res.data.data.productList;
                 // console.log(data);
@@ -57,7 +57,7 @@ export default function Inventory() {
             stock: updatedProduct.stock,
         };
 
-        axios.patch(`${import.meta.env.VITE_PROXY} /api/inventory/product/${id}`, productData)
+        axios.patch(`${import.meta.env.VITE_PROXY}/api/inventory/product/${id}`, productData)
             .then((res) => {
                 console.log(res.data.data)
                 Swal.fire({
@@ -96,7 +96,7 @@ export default function Inventory() {
             reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${import.meta.env.VITE_PROXY} /api/inventory/product/${id}`)
+                axios.delete(`${import.meta.env.VITE_PROXY}/api/inventory/product/${id}`)
                     .then(res => {
                         // Remove the deleted product from the state
                         setEditableProducts(prev =>

@@ -27,7 +27,7 @@ export default function Order() {
     useEffect(() => {
         customer.userType != "customer" ? navigate(-1) : null
 
-        axios.get(`${import.meta.env.VITE_PROXY} /api/order/view/${params.orderId}`)
+        axios.get(`${import.meta.env.VITE_PROXY}/api/order/view/${params.orderId}`)
             .then(res => {
                 setOrderDetails(res.data.data);
             })
@@ -54,7 +54,7 @@ export default function Order() {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.patch(`${import.meta.env.VITE_PROXY} /api/order/manage/${params.orderId}`, { orderStatus: "cancelled" })
+                axios.patch(`${import.meta.env.VITE_PROXY}/api/order/manage/${params.orderId}`, { orderStatus: "cancelled" })
                     .then(res => {
                         setOrderDetails({ ...orderDetails, orderStatus: "cancelled" })
                     })

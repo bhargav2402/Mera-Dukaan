@@ -35,7 +35,7 @@ export default function Order() {
     useEffect(() => {
         if (vendor.userType !== "vendor") navigate(-1);
 
-        axios.get(`${import.meta.env.VITE_PROXY} /api/order/view/${params.orderId}`)
+        axios.get(`${import.meta.env.VITE_PROXY}/api/order/view/${params.orderId}`)
             .then(res => {
                 setOrderDetails(res.data.data);
             })
@@ -51,7 +51,7 @@ export default function Order() {
             orderStatus: "accepted",
             description: acceptNote
         }
-        axios.patch(`${import.meta.env.VITE_PROXY} /api/order/manage/${params.orderId}`, data)
+        axios.patch(`${import.meta.env.VITE_PROXY}/api/order/manage/${params.orderId}`, data)
             .then(res => {
                 setOrderDetails({ ...orderDetails, orderStatus: "accepted" })
             })
@@ -96,7 +96,7 @@ export default function Order() {
                     description: rejectNote
                 }
 
-                axios.patch(`${import.meta.env.VITE_PROXY} /api/order/manage/${params.orderId}`, data)
+                axios.patch(`${import.meta.env.VITE_PROXY}/api/order/manage/${params.orderId}`, data)
                     .then(res => {
                         setOrderDetails({ ...orderDetails, orderStatus: "rejected" })
                     })
@@ -120,7 +120,7 @@ export default function Order() {
             deliveryCode: code
         };
 
-        axios.patch(`${import.meta.env.VITE_PROXY} /api/order/manage/${params.orderId}`, data)
+        axios.patch(`${import.meta.env.VITE_PROXY}/api/order/manage/${params.orderId}`, data)
             .then(res => {
                 setOrderDetails({ ...orderDetails, orderStatus: "delivered" });
                 setCode(null)

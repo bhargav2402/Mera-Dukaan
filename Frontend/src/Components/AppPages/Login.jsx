@@ -9,14 +9,15 @@ import Cookies from "js-cookie"
 export default function SignIn() {
     const [userType, setUserType] = useState('customer')
     const [formData, setFormData] = useState({ username: "", email: "", password: "" })
-
+    console.log("hey");
     const navigate = useNavigate()
     const [errorMessage, setErrorMessage] = useState("");
 
     // If user logged in then redirect to home page
     useEffect(() => {
         const user = Cookies.get("user") ? true : false
-
+        console.log(user);
+        
         if (user) navigate(-1)
     }, [])
 
@@ -31,12 +32,15 @@ export default function SignIn() {
         setFormData({ ...formData, username: formData.email })
 
         if (userType === "vendor") {
-            axios.post(import.meta.env.VITE_PROXY + "/api/vendor/login", formData)
-                .then(res => navigate("/vendor/overview"))
+            axios.post(import.meta.env.VITE_PROX+"/api/vendor/login", formData)
+                .then(res => {
+                    console.log(res);
+                    navigate("/vendor/overview")
+                })
                 .catch(e => setErrorMessage(e.response.data.message))
         }
         else {
-            axios.post(import.meta.env.VITE_PROXY + "/api/customer/login", formData)
+            axios.post(import.meta.env.VITE_PROXY+"/api/customer/login", formData)
                 .then(res => navigate("/home"))
                 .catch(e => setErrorMessage(e.response.data.message))
         }

@@ -25,8 +25,8 @@ export default function StoreFront() {
             navigate(-1);
         } else {
             Promise.all([
-                axios.get(`${import.meta.env.VITE_PROXY} /api/inventory/vendor/${vendor._id}`),
-                axios.get(`${import.meta.env.VITE_PROXY} /api/customer/cart/items/${vendor._id}`)
+                axios.get(`${import.meta.env.VITE_PROXY}/api/inventory/vendor/${vendor._id}`),
+                axios.get(`${import.meta.env.VITE_PROXY}/api/customer/cart/items/${vendor._id}`)
             ])
                 .then(([inventoryRes, cartRes]) => {
                     const inventoryData = inventoryRes.data.data.productList;

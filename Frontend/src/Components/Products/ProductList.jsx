@@ -29,7 +29,7 @@ export default function ProductList() {
         setLoading(true)
         // Getting inventory products to check if prod exists
         if (user.userType == "vendor") {
-            axios.get(`${import.meta.env.VITE_PROXY} /api/inventory/products`)
+            axios.get(`${import.meta.env.VITE_PROXY}/api/inventory/products`)
                 .then(res => {
                     const data = res.data.data;
                     setInventory(data)
@@ -40,7 +40,7 @@ export default function ProductList() {
         // Getting ALl Category products or specific category products conditionally
         if (!searchTerm) {
             if (selectedSubCategory === "All Categories") {
-                axios.get(`${import.meta.env.VITE_PROXY} /api/product/sample`)
+                axios.get(`${import.meta.env.VITE_PROXY}/api/product/sample`)
                     .then(res => {
                         const data = res.data.data;
                         setProducts(data);
@@ -51,7 +51,7 @@ export default function ProductList() {
                         console.error(e.response?.data?.message);
                     });
             } else {
-                axios.get(`${import.meta.env.VITE_PROXY} /api/product/specific/${selectedSubCategory}/${page}`)
+                axios.get(`${import.meta.env.VITE_PROXY}/api/product/specific/${selectedSubCategory}/${page}`)
                     .then(res => {
                         const data = res.data.data;
                         setTotal(data?.totalProducts)
@@ -62,7 +62,7 @@ export default function ProductList() {
             }
         } else {
             setSearchResults([])
-            axios.get(`${import.meta.env.VITE_PROXY} /api/product/search?searchTerm=${searchTerm}`)
+            axios.get(`${import.meta.env.VITE_PROXY}/api/product/search?searchTerm=${searchTerm}`)
                 .then(res => {
                     const data = res.data.data;
                     setSearchResults(data);
@@ -73,7 +73,7 @@ export default function ProductList() {
     }, [selectedSubCategory, searchTerm]);
 
     const handleAddToInventory = (id) => {
-        axios.post(`${import.meta.env.VITE_PROXY} /api/inventory/add`, { product: id })
+        axios.post(`${import.meta.env.VITE_PROXY}/api/inventory/add`, { product: id })
             .then(res => {
                 const data = res.data.data;
                 Swal.fire({

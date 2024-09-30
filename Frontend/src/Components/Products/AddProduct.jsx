@@ -32,7 +32,7 @@ export default function AddProduct() {
         if (formData.stock !== true) final["stock"] = formData.stock
         if (formData.description && formData.description.trim()) final["description"] = formData.description;
         
-        axios.post(`${import.meta.env.VITE_PROXY} /api/inventory/add`, final)
+        axios.post(`${import.meta.env.VITE_PROXY}/api/inventory/add`, final)
             .then(res => {
                 Swal.fire({
                     title: "Product successfully added to your inventory",

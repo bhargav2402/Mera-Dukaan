@@ -26,7 +26,7 @@ export default function PlaceOrder() {
             navigate(-1);
         }
 
-        axios.get(`${import.meta.env.VITE_PROXY} /api/customer/cart/vendor/${vendorId}`)
+        axios.get(`${import.meta.env.VITE_PROXY}/api/customer/cart/vendor/${vendorId}`)
             .then(res => {
                 const data = res.data.data;
                 setOrderDetails(data)
@@ -66,12 +66,12 @@ export default function PlaceOrder() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed && delivery) {
-                axios.post(`${import.meta.env.VITE_PROXY} /api/order/`, { vendor: _id, description: note })
+                axios.post(`${import.meta.env.VITE_PROXY}/api/order/`, { vendor: _id, description: note })
                     .then(res => {
                         const data = res.data.data;
 
                         if (clear) {
-                            axios.delete(`${import.meta.env.VITE_PROXY} /api/customer/cart/items/${data.vendor}`)
+                            axios.delete(`${import.meta.env.VITE_PROXY}/api/customer/cart/items/${data.vendor}`)
                                 .catch(e => console.error(e.response.data.message));
                         }
 
