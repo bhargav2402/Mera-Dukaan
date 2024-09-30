@@ -109,7 +109,7 @@ export default function VendorRegister() {
             formDataToSend.append('shopImage', shopImageFile);
         }
 
-        axios.post(`/api/vendor/register`, formDataToSend, {
+        axios.post(`${import.meta.env.VITE_PROXY} /api/vendor/register`, formDataToSend, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },

@@ -36,7 +36,7 @@ export default function Shops() {
         customer.userType != "customer" ? navigate(-1) : null
 
         if (!searchTerm) {
-            axios.get(`/api/vendor/nearby/${location[selectedLocation]}`)
+            axios.get(`${import.meta.env.VITE_PROXY} /api/vendor/nearby/${location[selectedLocation]}`)
                 .then(res => {
                     const data = res.data.data;
                     setVendors(data)
@@ -44,7 +44,7 @@ export default function Shops() {
                 })
                 .catch(e => console.error(e.response.data.message));
         } else {
-            axios.get(`/api/vendor/search?searchTerm=${searchTerm}`)
+            axios.get(`${import.meta.env.VITE_PROXY} /api/vendor/search?searchTerm=${searchTerm}`)
                 .then(res => {
                     const data = res.data.data;
                     setVendors(data)

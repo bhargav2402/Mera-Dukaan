@@ -68,7 +68,7 @@ export default function Customer() {
             return;
         }
 
-        axios.get(`/api/customer/current`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/customer/current`)
             .then(res => {
                 const data = res.data.data;
                 setDetails(data);
@@ -108,7 +108,7 @@ export default function Customer() {
 
             if (Object.keys(formData).length > 0) {
                 setLoading(true);
-                axios.patch(`/api/customer/update`, formData)
+                axios.patch(`${import.meta.env.VITE_PROXY} /api/customer/update`, formData)
                     .then(res => {
                         const data = res.data.data;
                         setOriginalDetails(data);
@@ -128,7 +128,7 @@ export default function Customer() {
                     setErrorMessage('New passwords do not match');
                     return;
                 } else {
-                    axios.patch(`/api/customer/password`, { oldPassword, newPassword })
+                    axios.patch(`${import.meta.env.VITE_PROXY} /api/customer/password`, { oldPassword, newPassword })
                         .then(res => {
                             Alert('Password changed successfully');
                             setPasswordFields({

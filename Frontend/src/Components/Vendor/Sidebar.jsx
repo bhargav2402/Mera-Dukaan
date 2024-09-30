@@ -19,7 +19,7 @@ export default function Sidebar() {
             navigate(-1)
         }
 
-        axios.patch(`/api/vendor/update/open`, { status: null })
+        axios.patch(`${import.meta.env.VITE_PROXY} /api/vendor/update/open`, { status: null })
             .then(res => {
                 const data = res.data.data;
                 setOpen(data);
@@ -32,7 +32,7 @@ export default function Sidebar() {
     };
 
     const logout = () => {
-        axios.get("/api/vendor/logout")
+        axios.get("${import.meta.env.VITE_PROXY} /api/vendor/logout")
             .then(res => {
                 navigate("/signin")
             })

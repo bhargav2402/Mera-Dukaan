@@ -26,7 +26,7 @@ export default function Overview() {
             return;
         }
         setOrders([])
-        axios.get(`/api/order/today/${selectedStatus}`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/order/today/${selectedStatus}`)
             .then(res => {
                 setOrders(res.data.data);
                 setLoading(false);

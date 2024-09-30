@@ -58,7 +58,7 @@ export default function NewProduct() {
             formData.append('price', content.price);
             formData.append('image', content.image);
 
-            const productResponse = await axios.post('/api/product/add', formData, {
+            const productResponse = await axios.post('${import.meta.env.VITE_PROXY} /api/product/add', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -72,7 +72,7 @@ export default function NewProduct() {
             const productId = productResponse.data.data._id;
 
             // Second Axios call to add to inventory
-            await axios.post(`/api/inventory/add`, {
+            await axios.post(`${import.meta.env.VITE_PROXY} /api/inventory/add`, {
                 product: productId,
                 stock: content.inStock,
                 description: content.description

@@ -16,7 +16,7 @@ export default function Cart() {
         if (customer.userType !== "customer") {
             navigate(-1);
         } else {
-            axios.get(`/api/customer/cart`)
+            axios.get(`${import.meta.env.VITE_PROXY} /api/customer/cart`)
                 .then(res => {
                     const data = res.data.data;
                     const formattedCart = Object.entries(data).map(([id, cartData]) => {
@@ -60,7 +60,7 @@ export default function Cart() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed && delivery) {
-                axios.delete(`/api/customer/cart/clear`)
+                axios.delete(`${import.meta.env.VITE_PROXY} /api/customer/cart/clear`)
                     .then(res => {
                         Swal.fire({
                             title: 'All clear!',

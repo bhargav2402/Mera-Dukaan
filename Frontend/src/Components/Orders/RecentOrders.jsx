@@ -29,7 +29,7 @@ export default function RecentOrders() {
         setLoading(true);
         setOrders([]);
         const statusParam = selectedStatus === 'All' ? 'all' : `/${selectedStatus.toLowerCase()}`;
-        axios.get(`/api/order/today/${statusParam}`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/order/today/${statusParam}`)
             .then(res => {
                 setOrders(res.data.data);
                 setLoading(false);

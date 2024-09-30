@@ -9,9 +9,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
-      proxy: {
-        "/api": env.VITE_PROXY // Access env variable using `env` object
-      }
+      // proxy: {
+      //   "/api": env.VITE_PROXY // Access env variable using `env` object
+      // }
+      
     }
   }
 })

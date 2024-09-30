@@ -67,7 +67,7 @@ export default function CustomerRegister() {
         e.preventDefault();
         console.log(formData);
 
-        axios.post(`/api/customer/register`, formData)
+        axios.post(`${import.meta.env.VITE_PROXY} /api/customer/register`, formData)
             .then(res => {
                 Swal.fire({
                     title: 'Registration Successful!',

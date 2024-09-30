@@ -90,7 +90,7 @@ const UserProfileDashboard = () => {
     useEffect(() => {
         vendor.userType !== "vendor" ? navigate(-1) : null;
 
-        axios.get(`/api/order/overview/${duration[timePeriod]}`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/order/overview/${duration[timePeriod]}`)
             .then(res => {
                 const data = res.data.data;
                 setOrders(data.overview);
@@ -98,7 +98,7 @@ const UserProfileDashboard = () => {
             })
             .catch(e => console.error(e.response.data));
 
-        axios.get(`/api/inventory/overview`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/inventory/overview`)
             .then(res => {
                 const data = res.data.data;
 

@@ -52,7 +52,7 @@ export default function ShopDetailsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`/api/vendor/current/${vendor}`)
+        axios.get(`${import.meta.env.VITE_PROXY} /api/vendor/current/${vendor}`)
             .then(res => {
                 setVendorDetails(res.data.data);
                 setOriginalDetails(JSON.parse(JSON.stringify(res.data.data)));
@@ -110,7 +110,7 @@ export default function ShopDetailsPage() {
 
             if (Object.keys(formData).length > 0) {
                 setLoading(true)
-                axios.patch(`/api/vendor/update/details`, formData)
+                axios.patch(`${import.meta.env.VITE_PROXY} /api/vendor/update/details`, formData)
                     .then(res => {
                         const data = res.data
                         setOriginalDetails(data.data);
@@ -127,7 +127,7 @@ export default function ShopDetailsPage() {
                     alert('Passwords do not match');
                     return;
                 } else {
-                    axios.patch(`/api/vendor/update/password`, { oldPassword, newPassword })
+                    axios.patch(`${import.meta.env.VITE_PROXY} /api/vendor/update/password`, { oldPassword, newPassword })
                         .then(res => {
                             const data = res.data.message;
                             Alert(data)
@@ -174,7 +174,7 @@ export default function ShopDetailsPage() {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.patch(`/api/vendor/update/open`, { status: open })
+                axios.patch(`${import.meta.env.VITE_PROXY} /api/vendor/update/open`, { status: open })
                     .then(res => {
                         const data = res.data.data;
                         user.setOpen(data)

@@ -29,7 +29,7 @@ export default function Cart({ orderItems = [], vendor = "" }) {
             count: count
         };
 
-        axios.post(`/api/customer/cart/add`, productDetails)
+        axios.post(`${import.meta.env.VITE_PROXY} /api/customer/cart/add`, productDetails)
             .then(res => {
                 orderItems.find(item => item.product._id === productId).count = count;
                 setEditingItem(null); // Exit edit mode
@@ -55,7 +55,7 @@ export default function Cart({ orderItems = [], vendor = "" }) {
                     vendor: vendor,
                 };
 
-                axios.post(`/api/customer/cart/remove`, productDetails)
+                axios.post(`${import.meta.env.VITE_PROXY} /api/customer/cart/remove`, productDetails)
                     .then(res => {
                         Swal.fire({
                             title: 'Product removed!',
