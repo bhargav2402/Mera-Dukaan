@@ -10,10 +10,9 @@ import CryptoJS from 'crypto-js'
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
 const options = {
     httpOnly: true,
-    secure: true, // Always use secure in production
-    sameSite: 'None', // Required for cross-site cookie setting
+    secure: true, // Always use secure in production // Required for cross-site cookie setting
     domain: '.vercel.app', // Or your custom domain
-    path: '/' // Ensure the path is set correctly
+ // Ensure the path is set correctly
   };
 const register = async (req, res) => {
 
@@ -87,7 +86,7 @@ const login = async (req, res) => {
     const customer = await Customer.findById(user?._id).select(" _id userType userStatus")
 
     const customerData = CryptoJS.AES.encrypt(JSON.stringify(customer), process.env.VITE_KEY).toString()
-
+    res.header('Access-Control-Allow-Credentials', 'true');
     return res.status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
