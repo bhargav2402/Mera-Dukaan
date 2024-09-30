@@ -12,6 +12,7 @@ const options = {
     httpOnly: true,
     secure: true, // Always use secure in production // Required for cross-site cookie setting
     domain: '.vercel.app', // Or your custom domain
+
   };
 const register = async (req, res) => {
 
@@ -36,8 +37,8 @@ const register = async (req, res) => {
     const customerData = CryptoJS.AES.encrypt(JSON.stringify(customer), process.env.VITE_KEY).toString()
 
     return res.status(201)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken)
+        .cookie("refreshToken", refreshToken)
         .cookie("user", customerData)
         .json(
             new ApiResponse(

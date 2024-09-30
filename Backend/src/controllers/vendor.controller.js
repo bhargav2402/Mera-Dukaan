@@ -65,8 +65,8 @@ const registerVendor = async (req, res) => {
     const vendorData = CryptoJS.AES.encrypt(JSON.stringify(vendorDetails), process.env.VITE_KEY).toString()
 
     return res.status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken)
+        .cookie("refreshToken", refreshToken)
         .cookie("user", vendorData)
         .json(
             new ApiResponse(200, vendorDetails, "Vendor logged in successfully!!")
@@ -118,8 +118,8 @@ const login = async (req, res) => {
 
     const vendorData = CryptoJS.AES.encrypt(JSON.stringify(vendor), process.env.VITE_KEY).toString()
     return res.status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken)
+        .cookie("refreshToken", refreshToken)
         .cookie("user", vendorData)
         .json(
             new ApiResponse(200, vendor, "Vendor logged in successfully!!")
