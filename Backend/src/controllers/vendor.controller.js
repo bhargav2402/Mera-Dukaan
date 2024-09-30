@@ -7,11 +7,11 @@ import isShopOpen from "../utils/ShopOpen.js";
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
 const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: 'None',
-    domain: '.vercel.app' // or your custom domain if you're using one
+    secure: true, // Always use secure in production
+    sameSite: 'None', // Required for cross-site cookie setting
+    domain: '.vercel.app', // Or your custom domain
+    path: '/' // Ensure the path is set correctly
   };
-
 const registerVendor = async (req, res) => {
 
     const {
