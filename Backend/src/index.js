@@ -9,11 +9,7 @@ dotenv.config({ path: "./env" })
 const app = express()
 
 // To handle middlewares
-app.use(cors({
-    origin: 'https://your-vercel-app-domain.vercel.app',
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }));
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 app.use(express.json({ limit: "16kb" }))
 app.use(express.urlencoded({ extended: true, limit: "16kb" }))
 app.use(express.static("public"));
