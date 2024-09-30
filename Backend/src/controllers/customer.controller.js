@@ -8,8 +8,12 @@ import Product from "../models/product.model.js"
 import CryptoJS from 'crypto-js'
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
-const options = { httpOnly: true, secure: true }
-
+const options = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: 'None',
+    domain: '.vercel.app' // or your custom domain if you're using one
+  };
 const register = async (req, res) => {
 
     const { username, email, age, password, primary, secondary, address, area, city, pincode } = req.body

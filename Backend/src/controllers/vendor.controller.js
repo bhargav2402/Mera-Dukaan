@@ -5,7 +5,12 @@ import CryptoJS from 'crypto-js'
 import isShopOpen from "../utils/ShopOpen.js";
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
-const options = { httpOnly: true, secure: true }
+const options = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: 'None',
+    domain: '.vercel.app' // or your custom domain if you're using one
+  };
 
 const registerVendor = async (req, res) => {
 

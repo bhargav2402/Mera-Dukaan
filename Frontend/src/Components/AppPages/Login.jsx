@@ -32,15 +32,19 @@ export default function SignIn() {
         setFormData({ ...formData, username: formData.email })
 
         if (userType === "vendor") {
-            axios.post(import.meta.env.VITE_PROX+"/api/vendor/login", formData)
+            axios.post(import.meta.env.VITE_PROXY+"/api/vendor/login", formData,{
+                withCredentials: true
+              })
                 .then(res => {
-                    console.log(res);
+                    
                     navigate("/vendor/overview")
                 })
                 .catch(e => setErrorMessage(e.response.data.message))
         }
         else {
-            axios.post(import.meta.env.VITE_PROXY+"/api/customer/login", formData)
+            axios.post(import.meta.env.VITE_PROXY+"/api/customer/login", formData,{
+                withCredentials: true
+              })
                 .then(res => navigate("/home"))
                 .catch(e => setErrorMessage(e.response.data.message))
         }
