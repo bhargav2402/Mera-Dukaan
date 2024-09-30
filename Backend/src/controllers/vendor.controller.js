@@ -104,7 +104,7 @@ const login = async (req, res) => {
     const validPassword = await user.isPasswordCorrect(password)
     if (!validPassword) return res.status(400).json(new ApiResponse(400, null, "Password incorrect"))
 
-    const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
+    let { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
 
     const { start, end } = user.shopTimings;
     const shouldBeOpen = isShopOpen(start, end);
@@ -115,14 +115,15 @@ const login = async (req, res) => {
         { $set: { isOpen: shouldBeOpen } },
         { new: true, select: (" _id userStatus userType isOpen username registrationNumber ") }
     )
-
+    accessToken = accessToken.toString()
+    refreshToken = refreshToken.toString()
     const vendorData = CryptoJS.AES.encrypt(JSON.stringify(vendor), process.env.VITE_KEY).toString()
     return res.status(200)
         .cookie("accessToken", accessToken)
         .cookie("refreshToken", refreshToken)
         .cookie("user", vendorData)
         .json(
-            new ApiResponse(200, vendor, "Vendor logged in successfully!!")
+            new ApiResponse(200, {vendor,accessToken, refreshToken}, "Vendor logged in successfully!!")
         )
 }
 
