@@ -45,7 +45,10 @@ export default function SignIn() {
             axios.post(import.meta.env.VITE_PROXY + "/api/customer/login", formData, {
                 withCredentials: true
             })
-                .then(res => navigate("/home"))
+                .then(res => {
+                    console.log(res.data);
+                    
+                    navigate("/home")})
                 .catch(e => setErrorMessage(e.response.data.message))
         }
     }

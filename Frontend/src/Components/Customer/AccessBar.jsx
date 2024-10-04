@@ -11,8 +11,11 @@ export default function AccessBar() {
     const navigate = useNavigate();
 
     const signedIn = Cookies.get("user")
+    console.log("COOKIE:", signedIn);
+    
     let user = signedIn ? decrypt() : null
-
+    console.log("DECRYPTED: ", user);
+    
     useEffect(() => {
         if (user.userType !== "customer" || user.userStatus !== "active") {
             navigate(-1)
