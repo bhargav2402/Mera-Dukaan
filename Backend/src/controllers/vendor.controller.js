@@ -63,7 +63,8 @@ const registerVendor = async (req, res) => {
     const vendorDetails = await Vendor.findById(vendor._id).select(" _id userStatus userType isOpen shopName registrationNumber ")
 
     const vendorData = CryptoJS.AES.encrypt(JSON.stringify(vendorDetails), process.env.VITE_KEY).toString()
-
+    res.header('Access-Control-Allow-Origin', '<your-frontend-domain>');
+    res.header('Access-Control-Allow-Credentials', 'true');
     return res.status(200)
         .cookie("accessToken", accessToken)
         .cookie("refreshToken", refreshToken)

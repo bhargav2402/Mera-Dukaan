@@ -33,9 +33,13 @@ const register = async (req, res) => {
     const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
 
     const customer = await Customer.findById(user?._id).select(" _id userType userStatus")
-
+    console.log(customer, accessToken, refreshToken);
+    console.log(req.cookie);
+    
+    
     const customerData = CryptoJS.AES.encrypt(JSON.stringify(customer), process.env.VITE_KEY).toString()
-
+    res.header('Access-Control-Allow-Origin', 'https://mera-dukaan-new.vercel.app/');
+    res.header('Access-Control-Allow-Credentials', 'true');
     return res.status(201)
         .cookie("accessToken", accessToken)
         .cookie("refreshToken", refreshToken)
