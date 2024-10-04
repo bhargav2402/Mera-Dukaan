@@ -112,4 +112,3 @@ customerSchema.methods.generateRefreshToken = function(){
 }
 const Customer = model("Customer", customerSchema);
 export default Customer;
->>>>>>> 0382384 (Test if works)
