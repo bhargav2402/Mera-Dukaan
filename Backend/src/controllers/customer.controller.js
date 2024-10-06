@@ -92,9 +92,9 @@ const login = async (req, res) => {
     const customerData = CryptoJS.AES.encrypt(JSON.stringify(customer), process.env.VITE_KEY).toString()
 
     return res.status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
-        // .cookie("user", customerData)
+        .cookie("accessToken", accessToken)
+        .cookie("refreshToken", refreshToken)
+        .cookie("user", customerData)
         .json(
             new ApiResponse(
                 200,

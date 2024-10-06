@@ -13,7 +13,7 @@ export default function AccessBar() {
     const signedIn = Cookies.get("user")
     console.log("COOKIE:", signedIn);
     
-    let user = JSON.parse(signedIn) //signedIn //? decrypt() : null
+    let user = signedIn ? decrypt() : null
     console.log("DECRYPTED: ", user);
     
     useEffect(() => {
