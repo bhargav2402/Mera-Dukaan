@@ -47,7 +47,7 @@ export default function SignIn() {
             })
                 .then(res => {
                     const data = res.data.data
-                    Cookies.set("user", data.user)
+                    Cookies.set("user", JSON.stringify(data.user))
                     Cookies.set("accessToken", data.accessToken)
                     Cookies.set("refreshToken", data.refreshToken)
                     navigate("/home")})

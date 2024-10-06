@@ -10,7 +10,7 @@ export default function AccessBar() {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
-    const signedIn = Cookies.get("user")
+    const signedIn = JSON.parse(Cookies.get("user"))
     console.log("COOKIE:", signedIn);
     
     let user = signedIn //? decrypt() : null
