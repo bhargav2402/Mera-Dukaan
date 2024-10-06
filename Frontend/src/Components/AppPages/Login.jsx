@@ -46,8 +46,10 @@ export default function SignIn() {
                 withCredentials: true
             })
                 .then(res => {
-                    console.log(res.data);
-                    
+                    const data = res.data.data
+                    Cookies.set("user", data.user)
+                    Cookies.set("accessToken", data.accessToken)
+                    Cookies.set("refreshToken", data.refreshToken)
                     navigate("/home")})
                 .catch(e => setErrorMessage(e.response.data.message))
         }

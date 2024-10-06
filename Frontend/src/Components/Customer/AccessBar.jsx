@@ -5,16 +5,15 @@ import logo from "../assets/logo.png";
 import axios from 'axios';
 import { decrypt } from "../utility"
 import Cookies from "js-cookie"
-import { useCookies } from 'react-cookie';
 
 export default function AccessBar() {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
-    const signedIn = cookies.user
+
+    const signedIn = Cookies.get("user")
     console.log("COOKIE:", signedIn);
     
-    let user = signedIn ? decrypt() : null
+    let user = signedIn //? decrypt() : null
     console.log("DECRYPTED: ", user);
     
     useEffect(() => {
