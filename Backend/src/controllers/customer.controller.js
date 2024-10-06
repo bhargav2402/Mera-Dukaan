@@ -12,7 +12,7 @@ const options = {
     // httpOnly: true,
     // secure: true, // Always use secure in production // Required for cross-site cookie setting
     // domain: '.vercel.app', // Or your custom domain
-    sameSite : "none",
+    sameSite: 'None',
   };
 const register = async (req, res) => {
 
