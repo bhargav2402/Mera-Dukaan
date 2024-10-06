@@ -9,10 +9,17 @@ import CryptoJS from 'crypto-js'
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
 const options = {
+<<<<<<< HEAD
     httpOnly: true,
     secure: true, // Always use secure in production // Required for cross-site cookie setting
     domain: '.vercel.app', // Or your custom domain
     sameSite: "None"
+=======
+    // httpOnly: true,
+    // secure: true, // Always use secure in production // Required for cross-site cookie setting
+    // domain: '.vercel.app', // Or your custom domain
+    sameSite: 'None',
+>>>>>>> parent of c0aa6f7 (j 2.2.tres)
   };
 const register = async (req, res) => {
 
