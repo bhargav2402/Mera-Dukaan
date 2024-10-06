@@ -9,10 +9,10 @@ import CryptoJS from 'crypto-js'
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
 const options = {
-    httpOnly: true,
-    secure: true, // Always use secure in production // Required for cross-site cookie setting
-    domain: '.vercel.app', // Or your custom domain
-
+    // httpOnly: true,
+    // secure: true, // Always use secure in production // Required for cross-site cookie setting
+    // domain: '.vercel.app', // Or your custom domain
+    sameSite : "none",
   };
 const register = async (req, res) => {
 
@@ -114,9 +114,9 @@ const logout = async (req, res) => {
     )
 
     return res.status(200)
-        .clearCookie("accessToken")
-        .clearCookie("refreshToken")
-        .clearCookie("user")
+        .clearCookie("accessToken",options)
+        .clearCookie("refreshToken",options)
+        .clearCookie("user",options)
         .json(new ApiResponse(200, {}, "User logged out successfully!!"))
 }
 
